@@ -2,23 +2,26 @@ import React from 'react';
 
 import Square from './Square';
 
-function Board() {
+function Board(props) {
+  function renderSquare(i) {
+    return <Square value={props.squares[i]} onClick={() => props.onClick(i)}/>;
+  }
   return (
     <div>
       <div className="board-row">
-        {Square(0)}
-        {Square(1)}
-        {Square(2)}
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
       <div className="board-row">
-        {Square(3)}
-        {Square(4)}
-        {Square(5)}
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
       </div>
       <div className="board-row">
-        {Square(6)}
-        {Square(7)}
-        {Square(8)}
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
       </div>
     </div>
   );
