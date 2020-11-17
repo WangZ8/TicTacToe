@@ -3,8 +3,7 @@ import Board from './Board';
 
 
 function Game() {
-  const [boardsquares, setBoardSquares] = useState(Array(9).fill(null));
-  const [boardhistory, setBoardHistory] = useState([{squares: boardsquares}]);
+  const [boardhistory, setBoardHistory] = useState([{squares: Array(9).fill(null)}]);
   const [xIsNext, setXIsNext] = useState(true);
   const [stepNumber, setStepNumber] = useState(0);
   function calculateWinner(squares) {
@@ -40,9 +39,8 @@ function Game() {
       return;
     }
     squares[i] = xIsNext ? 'X' : 'O';
-    setBoardSquares(squares);
     setBoardHistory(history.concat([{
-      squares: boardsquares
+      squares: squares
     }]));
     setStepNumber(history.length);
     setXIsNext(!xIsNext);
@@ -50,7 +48,7 @@ function Game() {
   
   const history = boardhistory;
   const current = history[stepNumber];
-  const winner = calculateWinner(boardsquares);
+  const winner = calculateWinner(current.squares);
   let status;
   if(winner){
     status = 'Winner: ' + winner;
@@ -69,7 +67,7 @@ function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        {<Board squares = {boardsquares} onClick={(i)=>handleClick(i)}/>}
+        {<Board squares = {current.squares} onClick={(i)=>handleClick(i)}/>}
       </div>
       <div className="game-info">
          <div>{ status }</div>
