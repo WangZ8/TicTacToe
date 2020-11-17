@@ -31,7 +31,7 @@ function Game() {
     setXIsNext((step % 2) ? false : true);
   }
 
-  function handleClick(i) {
+  function handleClick (i) {
     const history = boardhistory.slice(0, stepNumber+1)
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -67,7 +67,7 @@ function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        {<Board squares = {current.squares} onClick={(i)=>handleClick(i)}/>}
+        {<Board squares = {current.squares} onClick={handleClick}/>}
       </div>
       <div className="game-info">
          <div>{ status }</div>
