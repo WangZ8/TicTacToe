@@ -4,15 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-/*ReactDOM.render(
+ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
-);*/
-var element = React.createElement('h1', { classname: 'greeting'}, 'Hello, world!');
-ReactDOM.render(
-  element, 
   document.getElementById('root')
 );
 
